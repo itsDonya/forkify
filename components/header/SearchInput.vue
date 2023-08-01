@@ -2,6 +2,7 @@
   <input
     type="text"
     v-model="recipe"
+    ref="searchInput"
     class="w-72 h-full px-4 bg-transparent"
     placeholder="Search over 1,000,000 recipes..."
   />
@@ -14,10 +15,11 @@ export default {
 </script>
 
 <script setup>
-import { computed, useStore } from "@nuxtjs/composition-api";
+import { ref, computed, useStore, onMounted } from "@nuxtjs/composition-api";
 
 // variables
 const store = useStore();
+const searchInput = ref(null);
 
 // computed
 const recipe = computed({
@@ -28,5 +30,10 @@ const recipe = computed({
     // update recipe title (in store) on every change
     store.dispatch("updateRecipeTitle", value);
   },
+});
+
+// lidecycles
+onMounted(() => {
+  searchInput.value.focus();
 });
 </script>
