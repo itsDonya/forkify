@@ -1,5 +1,5 @@
 <template>
-  <p class="text-lg">Welcome :)</p>
+  <app-container></app-container>
 </template>
 
 <script>
