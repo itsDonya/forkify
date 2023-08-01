@@ -7,4 +7,11 @@
   button {
     @apply focus:outline-none;
   }
+  /* scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-200;
+  }
 }
