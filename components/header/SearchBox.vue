@@ -6,3 +6,9 @@
     <search-btn></search-btn>
   </form>
 </template>
+
+<script>
+export default {
+  name: "SearchBox",
+};
+</script>

@@ -6,3 +6,9 @@
     <span class="uppercase text-sm">search</span>
   </button>
 </template>
+
+<script>
+export default {
+  name: "SearchButton",
+};
+</script>

@@ -1,8 +1,10 @@
 <template>
-  <header class="w-full h-12 px-4 py-10 flex items-center justify-between">
+  <header class="w-full h-12 p-10 flex items-center justify-between">
     <app-logo></app-logo>
 
     <search-box></search-box>
+
+    <header-buttons></header-buttons>
   </header>
 </template>
 
