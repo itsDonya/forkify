@@ -1,7 +1,8 @@
 <template>
   <button
-    class="h-full px-8 text-white bg-gradient-to-br from-orange to-peach uppercase rounded-full"
+    class="h-full px-8 text-white bg-gradient-to-br from-orange to-peach rounded-full flex items-center justify-center gap-2 hover:scale-105 transition-all duration-300"
   >
-    search
+    <base-icon name="magnify-solid" class="w-4 h-4 fill-white"></base-icon>
+    <span class="uppercase text-sm">search</span>
   </button>
 </template>
