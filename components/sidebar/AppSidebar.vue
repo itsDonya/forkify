@@ -2,9 +2,9 @@
   <div
     class="w-96 h-full bg-white max-h-full overflow-y-auto overflow-x-hidden"
   >
-    <p v-if="$store.state.recipesError.length" class="m-4 text-zinc-500">
-      {{ $store.state.recipesError }}
-    </p>
+    <app-error v-if="$store.state.recipesError.length">{{
+      $store.state.recipesError
+    }}</app-error>
     <nuxt-link
       :to="'/' + recipe.recipe_id"
       v-for="recipe in recipes"
