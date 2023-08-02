@@ -1,4 +1,8 @@
 export const state = () => ({
+  // single recipe
+  recipe: null,
+  recipeError: "",
+  // recipes
   recipes: [],
   recipeTitle: "",
   recipesError: "",
@@ -14,11 +18,24 @@ export const mutations = {
   updateRecipeTitle(state, value) {
     state.recipeTitle = value;
   },
-  setError(state, value) {
+  setRecipesError(state, value) {
     state.recipesError = value;
   },
-  resetError(state) {
+  resetRecipesError(state) {
     state.recipesError = "";
+  },
+  // single recipe
+  setRecipe(state, data) {
+    state.recipe = data;
+  },
+  resetRecipe(state) {
+    state.recipe = null;
+  },
+  setRecipeError(state, value) {
+    state.recipeError = value;
+  },
+  resetRecipeError(state, value) {
+    state.recipeError = value;
   },
 };
 
@@ -30,20 +47,34 @@ export const actions = {
       )
       .then((res) => {
         commit("setRecipes", res.recipes);
-        commit("resetError");
+        commit("resetRecipesError");
       })
       .catch((error) => {
         commit("resetRecipes");
-        commit("setError", error.response.data.error);
+        commit("setRecipesError", error.response.data.error);
       });
   },
   updateRecipeTitle({ commit }, value) {
     commit("updateRecipeTitle", value);
+  },
+  async getRecipe({ commit }, id) {
+    await this.$axios
+      .$get(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)
+      .then((res) => {
+        commit("setRecipe", res.recipe);
+        commit("resetRecipeError");
+      })
+      .catch((error) => {
+        commit("setRecipeError", error.response.data.error);
+      });
   },
 };
 
 export const getters = {
   allRecipes(state) {
     return state.recipes;
+  },
+  getRecipe(state) {
+    return state.recipe;
   },
 };

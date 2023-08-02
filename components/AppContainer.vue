@@ -6,6 +6,8 @@
 
     <div class="w-full h-full flex items-start">
       <app-sidebar></app-sidebar>
+
+      <slot></slot>
     </div>
   </div>
 </template>
