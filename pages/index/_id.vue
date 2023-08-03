@@ -1,6 +1,10 @@
 <template>
-  <app-error v-if="!recipe">Error</app-error>
-  <h1 v-else>{{ id }}</h1>
+  <article class="w-full h-full">
+    <app-error v-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
+      We could not find that recipe. Please try another one!
+    </app-error>
+    <the-recipe v-else></the-recipe>
+  </article>
 </template>
 
 <script>
