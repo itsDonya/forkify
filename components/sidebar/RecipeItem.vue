@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/' + recipe.recipe_id">
+  <nuxt-link :to="'/' + recipe.id">
     <div
       class="w-full p-4 hover:bg-gray-200/20 transition-all flex items-center justify-start gap-3 hover:-translate-y-0.5 duration-300"
     >

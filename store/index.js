@@ -43,10 +43,12 @@ export const actions = {
   async getRecipes({ state, commit }) {
     await this.$axios
       .$get(
-        `https://forkify-api.herokuapp.com/api/search?q=${state.recipeTitle}`
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${
+          state.recipeTitle
+        }&key=${"78c0e77f-8730-4744-a8da-e0cf2fd03494"}`
       )
       .then((res) => {
-        commit("setRecipes", res.recipes);
+        commit("setRecipes", res.data.recipes);
         commit("resetRecipesError");
       })
       .catch((error) => {
@@ -59,9 +61,9 @@ export const actions = {
   },
   async getRecipe({ commit }, id) {
     await this.$axios
-      .$get(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)
+      .$get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       .then((res) => {
-        commit("setRecipe", res.recipe);
+        commit("setRecipe", res.data.recipe);
         commit("resetRecipeError");
       })
       .catch((error) => {
