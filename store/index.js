@@ -49,7 +49,15 @@ export const actions = {
       )
       .then((res) => {
         commit("setRecipes", res.data.recipes);
-        commit("resetRecipesError");
+        if (state.recipes.length) {
+          // OK, pass
+          commit("resetRecipesError");
+        } else {
+          commit(
+            "setRecipesError",
+            "No recipes found for your query! Please try again ;)"
+          );
+        }
       })
       .catch((error) => {
         commit("resetRecipes");

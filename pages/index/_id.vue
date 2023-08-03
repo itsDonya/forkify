@@ -1,7 +1,7 @@
 <template>
   <article class="w-full h-full">
     <app-error v-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
-      We could not find that recipe. Please try another one!
+      Start by searching for a recipe or an ingredient. Have fun!
     </app-error>
     <the-recipe v-else></the-recipe>
   </article>
@@ -48,7 +48,9 @@ watch(
 watch(
   () => id.value,
   (newval) => {
-    store.dispatch("getRecipe", newval);
+    if (newval) {
+      store.dispatch("getRecipe", newval);
+    }
   }
 );
 </script>
