@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-96 h-full bg-white max-h-full overflow-y-auto overflow-x-hidden"
+    class="w-[30rem] h-full bg-white max-h-full overflow-y-auto overflow-x-hidden"
   >
     <!-- show error if server returned an error  -->
     <app-error v-if="$store.state.recipesError.length">{{

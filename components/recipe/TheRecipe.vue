@@ -18,6 +18,56 @@
         alt=""
       />
     </section>
+
+    <!-- time & servings -->
+    <section class="w-full px-12 my-8 flex items-center justify-between">
+      <div class="flex items-center justify-start gap-4">
+        <!-- time -->
+        <div class="flex items-center justify-center gap-1.5">
+          <base-icon
+            name="clock-regular"
+            class="w-5 h-5 fill-peach"
+          ></base-icon>
+          <p class="uppercase text-neutral-600">
+            {{ recipe.cooking_time }} minutes
+          </p>
+        </div>
+
+        <!-- servings -->
+        <div class="flex items-center justify-center gap-1.5">
+          <base-icon name="user-regular" class="w-5 h-5 fill-peach"></base-icon>
+          <p class="uppercase text-neutral-600">
+            {{ recipe.servings }} servings
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center gap-2">
+          <!-- increase servings -->
+          <span
+            @click="increaseServings"
+            class="w-5 h-5 border-2 font-bold border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+            >+</span
+          >
+
+          <!-- decrease servings -->
+          <span
+            @click="decreaseServings"
+            class="w-5 h-5 border-2 font-bold border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+            >-</span
+          >
+        </div>
+      </div>
+
+      <!-- bookmark -->
+      <div
+        class="w-12 h-12 p-2 flex items-center justify-center bg-gradient-to-br from-orange to-peach rounded-full hover:scale-105 transition-all cursor-pointer"
+      >
+        <base-icon
+          name="bookmark-regular"
+          class="w-6 h-6 fill-white"
+        ></base-icon>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -33,6 +83,14 @@ import { computed, useStore } from "@nuxtjs/composition-api";
 // variables
 const store = useStore();
 
+// methods
+const increaseServings = () => {
+  // TODO
+};
+const decreaseServings = () => {
+  // TODO
+};
+
 // computed
 const recipe = computed(() => {
   return store.getters.getRecipe;
@@ -47,7 +105,7 @@ const recipe = computed(() => {
   transform: translate(-50%, 20%) skewY(-8deg);
   color: #fff;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   text-transform: uppercase;
   width: 50%;
   line-height: 1.7;
@@ -57,7 +115,7 @@ const recipe = computed(() => {
 .recipe-title span {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  padding: 0.6rem 2rem;
+  padding: 0.5rem 2rem;
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
 }
 </style>
