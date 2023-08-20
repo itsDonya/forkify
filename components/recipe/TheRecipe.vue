@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full min-h-full flex flex-col items-center justify-start gap-4">
+  <div
+    class="w-full max-h-full flex flex-col items-center justify-start gap-4 overflow-scroll"
+  >
     <!-- image & title -->
     <section
       class="relative w-full before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-br before:from-orange before:to-peach before:z-20 before:opacity-60"
@@ -68,6 +70,31 @@
         ></base-icon>
       </div>
     </section>
+
+    <!-- ingredients -->
+    <section
+      class="w-full p-10 bg-zinc-100 flex flex-col items-center justify-start gap-6"
+    >
+      <h5 class="text-peach text-xl font-bold uppercase tracking-wider">
+        recipe ingredients
+      </h5>
+
+      <div
+        class="w-10/12 mt-8 mx-auto h-96s grid grid-cols-2 items-center justify-center gap-6"
+      >
+        <div
+          v-for="(ingredient, i) in recipe.ingredients"
+          :key="i"
+          class="flex items-center justify-start gap-2"
+        >
+          <base-icon name="check-solid" class="w-4 fill-peach"></base-icon>
+          <p>
+            {{ ingredient.quantity }} {{ ingredient.unit }}
+            {{ ingredient.description }}
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -117,5 +144,8 @@ const recipe = computed(() => {
   box-decoration-break: clone;
   padding: 0.5rem 2rem;
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fbba89;
 }
 </style>
