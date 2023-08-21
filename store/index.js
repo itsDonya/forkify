@@ -1,6 +1,7 @@
 export const state = () => ({
   // app
   loading: false,
+  recipeLoading: false,
   // single recipe
   recipe: null,
   recipeError: "",
@@ -42,6 +43,9 @@ export const mutations = {
   setLoading(state, value) {
     state.loading = value;
   },
+  setRecipeLoading(state, value) {
+    state.recipeLoading = value;
+  },
 };
 
 export const actions = {
@@ -78,12 +82,12 @@ export const actions = {
     await this.$axios
       .$get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       .then((res) => {
+        commit("setRecipeLoading", false);
         commit("setRecipe", res.data.recipe);
         commit("resetRecipeError");
-        commit("setLoading", false);
       })
       .catch((error) => {
-        commit("setLoading", false);
+        commit("setRecipeLoading", false);
         commit("setRecipeError", error.response.data.error);
       });
   },
