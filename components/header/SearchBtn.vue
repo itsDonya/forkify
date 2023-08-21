@@ -21,6 +21,7 @@ const store = useStore();
 
 // methods
 const getRecipes = () => {
+  store.commit("setLoading", true);
   store.dispatch("getRecipes");
 };
 </script>

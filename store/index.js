@@ -1,4 +1,6 @@
 export const state = () => ({
+  // app
+  loading: false,
   // single recipe
   recipe: null,
   recipeError: "",
@@ -37,6 +39,9 @@ export const mutations = {
   resetRecipeError(state, value) {
     state.recipeError = value;
   },
+  setLoading(state, value) {
+    state.loading = value;
+  },
 };
 
 export const actions = {
@@ -58,9 +63,11 @@ export const actions = {
             "No recipes found for your query! Please try again ;)"
           );
         }
+        commit("setLoading", false);
       })
       .catch((error) => {
         commit("resetRecipes");
+        commit("setLoading", false);
         commit("setRecipesError", error.response.data.error);
       });
   },
@@ -73,8 +80,10 @@ export const actions = {
       .then((res) => {
         commit("setRecipe", res.data.recipe);
         commit("resetRecipeError");
+        commit("setLoading", false);
       })
       .catch((error) => {
+        commit("setLoading", false);
         commit("setRecipeError", error.response.data.error);
       });
   },

@@ -49,6 +49,7 @@ watch(
   () => id.value,
   (newval) => {
     if (newval) {
+      store.commit("setLoading", true);
       store.dispatch("getRecipe", newval);
     }
   }
