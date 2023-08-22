@@ -104,16 +104,25 @@ export const actions = {
       });
   },
   addBookmark({ state, commit }, recipeData) {
-    const bookmarkData = {
-      id: recipeData.id,
-      image: recipeData.image_url,
-      title: recipeData.title,
-      publisher: recipeData.publisher,
-    };
+    const identifiedRecipe = state.bookmarks.find(
+      (recipe) => recipe.id === recipeData.id
+    );
 
-    commit("addBookmark", bookmarkData);
+    if (!identifiedRecipe) {
+      const bookmarkData = {
+        id: recipeData.id,
+        image: recipeData.image_url,
+        title: recipeData.title,
+        publisher: recipeData.publisher,
+      };
 
-    localStorage.setItem("Forkify_Bookmarks", JSON.stringify(state.bookmarks));
+      commit("addBookmark", bookmarkData);
+
+      localStorage.setItem(
+        "Forkify_Bookmarks",
+        JSON.stringify(state.bookmarks)
+      );
+    }
   },
   getBookmarks({ commit }) {
     const bookmarks = localStorage.getItem("Forkify_Bookmarks");
