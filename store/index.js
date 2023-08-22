@@ -14,7 +14,7 @@ export const state = () => ({
   // bookmarks
   bookmarks: [],
   // modal
-  newRecipeModal: true,
+  newRecipeModal: false,
   modalError: "",
 });
 
