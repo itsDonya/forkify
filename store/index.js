@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 export const state = () => ({
   // app
   loading: false,
@@ -8,6 +10,8 @@ export const state = () => ({
   recipes: [],
   recipeTitle: "",
   recipesError: "",
+  // bookmarks
+  bookmarks: [],
 });
 
 export const mutations = {
@@ -41,6 +45,12 @@ export const mutations = {
   },
   setLoading(state, value) {
     state.loading = value;
+  },
+  addBookmark(state, data) {
+    // state.bookmarks.push(data);
+    const bookmarks = state.bookmarks;
+    bookmarks.push(data);
+    Vue.set(state, "bookmarks", bookmarks);
   },
 };
 
@@ -86,6 +96,15 @@ export const actions = {
         commit("setLoading", false);
         commit("setRecipeError", error.response.data.error);
       });
+  },
+  addBookmark({ commit }, recipeData) {
+    const bookmarkData = {
+      image: recipeData.image_url,
+      title: recipeData.title,
+      publisher: recipeData.publisher,
+    };
+
+    commit("addBookmark", bookmarkData);
   },
 };
 

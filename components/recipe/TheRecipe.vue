@@ -62,6 +62,7 @@
 
       <!-- bookmark -->
       <div
+        @click="addToBookmarks"
         class="w-12 h-12 p-2 flex items-center justify-center bg-gradient-to-br from-orange to-peach rounded-full hover:scale-105 transition-all cursor-pointer"
       >
         <base-icon
@@ -116,6 +117,9 @@ const increaseServings = () => {
 };
 const decreaseServings = () => {
   // TODO
+};
+const addToBookmarks = () => {
+  store.dispatch("addBookmark", recipe);
 };
 
 // computed
