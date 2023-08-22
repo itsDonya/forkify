@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute top-6 w-64 bg-zinc-50 shadow-xl rounded-lg hidden peer-hover:flex hover:flex transition-all flex-col items-center justify-start"
+    class="absolute top-6 w-64 bg-zinc-50 shadow-xl rounded-lg hidden peer-hover:flex hover:flex transition-all flex-col items-center justify-start z-40"
   >
     <bookmark-item
       v-for="(bookmark, i) in bookmarks"
