@@ -4,7 +4,10 @@
   >
     <nuxt />
 
-    <new-recipe-modal></new-recipe-modal>
+    <new-recipe-modal
+      v-if="$store.state.newRecipeModal"
+      @close="toggleModal"
+    ></new-recipe-modal>
   </main>
 </template>
 
@@ -12,4 +15,14 @@
 export default {
   name: "DefaultLayout",
 };
+</script>
+
+<script setup>
+import { useStore } from "@nuxtjs/composition-api";
+
+// variables
+const store = useStore();
+
+// methods
+const toggleModal = () => store.dispatch("toggleNewRecipeModal");
 </script>

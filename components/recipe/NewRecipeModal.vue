@@ -1,5 +1,5 @@
 <template>
-  <base-modal>
+  <base-modal @close="close">
     <div
       class="w-full h-full grid grid-cols-2 items-center justify-center gap-4"
     >
@@ -11,3 +11,11 @@
     </div>
   </base-modal>
 </template>
+
+<script setup>
+// emit
+const emit = defineEmits(["close"]);
+
+// methods
+const close = () => emit("close");
+</script>

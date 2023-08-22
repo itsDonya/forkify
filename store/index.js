@@ -14,6 +14,7 @@ export const state = () => ({
   // bookmarks
   bookmarks: [],
   // modal
+  newRecipeModal: false,
   modalError: "",
 });
 
@@ -52,6 +53,7 @@ export const mutations = {
   setRecipeLoading(state, value) {
     state.recipeLoading = value;
   },
+  // bookmarks
   addBookmark(state, data) {
     const bookmarks = state.bookmarks;
     bookmarks.unshift(data);
@@ -59,6 +61,10 @@ export const mutations = {
   },
   setBookmarks(state, list) {
     state.bookmarks = list;
+  },
+  // modal
+  toggleNewRecipeModal(state) {
+    state.newRecipeModal = !state.newRecipeModal;
   },
   setModalError(state, value) {
     state.modalError = value;
@@ -146,6 +152,10 @@ export const actions = {
   },
   resetModalError({ commit }) {
     commit("setModalError", "");
+  },
+  // modal
+  toggleNewRecipeModal({ commit }) {
+    commit("toggleNewRecipeModal");
   },
 };
 

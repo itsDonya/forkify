@@ -1,5 +1,6 @@
 <template>
   <button
+    v-on="$listeners"
     class="p-4 flex items-center justify-center gap-2 rounded-xl hover:bg-zinc-200/60 transition-all"
   >
     <base-icon :name="icon" class="w-5 h-5 fill-peach"></base-icon>

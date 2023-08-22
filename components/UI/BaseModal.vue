@@ -1,5 +1,6 @@
 <template>
   <div
+    @click.self="close"
     class="absolute w-screen h-screen bg-black/60 flex items-center justify-center z-50"
   >
     <div
@@ -31,11 +32,13 @@
 <script setup>
 import { useStore } from "@nuxtjs/composition-api";
 
+// emits
+const emit = defineEmits(["close"]);
+
 // variables
 const store = useStore();
 
 // methods
-const setModalError = () => {
-  store.dispatch("setModalError");
-};
+const close = () => emit("close");
+const setModalError = () => store.dispatch("setModalError");
 </script>
