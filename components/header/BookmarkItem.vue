@@ -1,13 +1,17 @@
 <template>
-  <nuxt-link to="/" class="w-full">
+  <nuxt-link :to="`/${bookmarkData.id}`" class="w-full">
     <div
       class="w-full p-4 hover:bg-gray-200/20 transition-all flex items-center justify-start gap-3"
     >
-      <img :src="bookmarkData.img" class="w-10" alt="fatoush salad" />
+      <img
+        :src="bookmarkData.image"
+        class="w-10 rounded-full"
+        :alt="bookmarkData.title"
+      />
       <div class="flex flex-col items-start justify-center">
         <p class="uppercase text-sm text-peach">{{ bookmarkData.title }}</p>
         <p class="uppercase text-[10px] text-gray-400">
-          {{ bookmarkData.description }}
+          {{ bookmarkData.publisher }}
         </p>
       </div>
     </div>

@@ -4,7 +4,7 @@
   >
     <app-header></app-header>
 
-    <div class="w-full h-full flex items-start">
+    <div class="w-full h-[88%] flex items-start">
       <app-sidebar></app-sidebar>
 
       <slot></slot>

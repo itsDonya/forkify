@@ -1,8 +1,16 @@
 <template>
-  <article class="w-full h-full">
-    <app-error v-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
+  <article class="w-full h-full max-h-full">
+    <!-- show loading icon while fetching recipes -->
+    <base-icon
+      v-if="$store.state.recipeLoading"
+      class="w-32 opacity-40"
+      name="animated-loading"
+    ></base-icon>
+
+    <app-error v-else-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
       Start by searching for a recipe or an ingredient. Have fun!
     </app-error>
+
     <the-recipe v-else></the-recipe>
   </article>
 </template>
@@ -49,7 +57,7 @@ watch(
   () => id.value,
   (newval) => {
     if (newval) {
-      store.commit("setLoading", true);
+      store.commit("setRecipeLoading", true);
       store.dispatch("getRecipe", newval);
     }
   }

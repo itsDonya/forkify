@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute top-6 w-64 bg-zinc-50 shadow-xl rounded-lg hidden peer-hover:flex hover:flex transition-all flex-col items-center justify-start"
+    class="absolute top-6 w-64 bg-zinc-50 shadow-xl rounded-lg hidden peer-hover:flex hover:flex transition-all flex-col items-center justify-start z-40"
   >
     <bookmark-item
       v-for="(bookmark, i) in bookmarks"
@@ -17,23 +17,13 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "@nuxtjs/composition-api";
+import { useStore, computed } from "@nuxtjs/composition-api";
 
-const bookmarks = ref([
-  {
-    img: "/favicon.png",
-    title: "fatoush salad",
-    description: "what's gaby cooking",
-  },
-  {
-    img: "/favicon.png",
-    title: "fatoush salad",
-    description: "what's gaby cooking",
-  },
-  {
-    img: "/favicon.png",
-    title: "fatoush salad",
-    description: "what's gaby cooking",
-  },
-]);
+// varuables
+const store = useStore();
+
+// computed
+const bookmarks = computed(() => {
+  return store.state.bookmarks;
+});
 </script>

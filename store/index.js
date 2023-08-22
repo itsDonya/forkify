@@ -3,6 +3,7 @@ import Vue from "vue";
 export const state = () => ({
   // app
   loading: false,
+  recipeLoading: false,
   // single recipe
   recipe: null,
   recipeError: "",
@@ -46,10 +47,12 @@ export const mutations = {
   setLoading(state, value) {
     state.loading = value;
   },
+  setRecipeLoading(state, value) {
+    state.recipeLoading = value;
+  },
   addBookmark(state, data) {
-    // state.bookmarks.push(data);
     const bookmarks = state.bookmarks;
-    bookmarks.push(data);
+    bookmarks.unshift(data);
     Vue.set(state, "bookmarks", bookmarks);
   },
 };
@@ -88,17 +91,18 @@ export const actions = {
     await this.$axios
       .$get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       .then((res) => {
+        commit("setRecipeLoading", false);
         commit("setRecipe", res.data.recipe);
         commit("resetRecipeError");
-        commit("setLoading", false);
       })
       .catch((error) => {
-        commit("setLoading", false);
+        commit("setRecipeLoading", false);
         commit("setRecipeError", error.response.data.error);
       });
   },
   addBookmark({ commit }, recipeData) {
     const bookmarkData = {
+      id: recipeData.id,
       image: recipeData.image_url,
       title: recipeData.title,
       publisher: recipeData.publisher,
