@@ -13,6 +13,8 @@ export const state = () => ({
   recipesError: "",
   // bookmarks
   bookmarks: [],
+  // modal
+  modalError: "",
 });
 
 export const mutations = {
@@ -57,6 +59,9 @@ export const mutations = {
   },
   setBookmarks(state, list) {
     state.bookmarks = list;
+  },
+  setModalError(state, value) {
+    state.modalError = value;
   },
 };
 
@@ -132,6 +137,15 @@ export const actions = {
       commit("setBookmarks", []);
       localStorage.setItem("Forkify_Bookmarks", JSON.stringify([]));
     }
+  },
+  setModalError({ commit }) {
+    const errorText =
+      "Uploads disabled. Build your application with your own API key ;)";
+
+    commit("setModalError", errorText);
+  },
+  resetModalError({ commit }) {
+    commit("setModalError", "");
   },
 };
 

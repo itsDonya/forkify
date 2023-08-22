@@ -7,9 +7,9 @@
       name="animated-loading"
     ></base-icon>
 
-    <app-error v-else-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
+    <base-error v-else-if="!recipe" class="mx-auto my-6 inline-block max-w-max">
       Start by searching for a recipe or an ingredient. Have fun!
-    </app-error>
+    </base-error>
 
     <the-recipe v-else></the-recipe>
   </article>

@@ -81,7 +81,7 @@
       </h5>
 
       <div
-        class="w-10/12 mt-8 mx-auto h-96s grid grid-cols-2 items-center justify-center gap-6"
+        class="w-10/12 mt-8 mx-auto grid grid-cols-2 items-center justify-center gap-6"
       >
         <div
           v-for="(ingredient, i) in recipe.ingredients"

@@ -1,8 +1,10 @@
 <template>
   <main
-    class="w-screen h-screen flex items-center justify-center bg-gradient-to-br from-orange to-peach font-nunito"
+    class="relative w-screen h-screen flex items-center justify-center bg-gradient-to-br from-orange to-peach font-nunito"
   >
     <nuxt />
+
+    <new-recipe-modal></new-recipe-modal>
   </main>
 </template>
 

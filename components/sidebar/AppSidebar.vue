@@ -10,9 +10,9 @@
     ></base-icon>
 
     <!-- show error if server returned an error  -->
-    <app-error v-else-if="$store.state.recipesError.length">{{
+    <base-error v-else-if="$store.state.recipesError.length">{{
       $store.state.recipesError
-    }}</app-error>
+    }}</base-error>
 
     <!-- single recipe -->
     <template v-else>
