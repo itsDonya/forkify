@@ -86,9 +86,12 @@
         <div
           v-for="(ingredient, i) in recipe.ingredients"
           :key="i"
-          class="flex items-center justify-start gap-2"
+          class="flex items-start justify-start gap-2"
         >
-          <base-icon name="check-solid" class="w-4 fill-peach"></base-icon>
+          <base-icon
+            name="check-solid"
+            class="w-4 min-w-[16px] fill-peach"
+          ></base-icon>
           <p>
             {{ ingredient.quantity }} {{ ingredient.unit }}
             {{ ingredient.description }}
