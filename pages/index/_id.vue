@@ -1,5 +1,5 @@
 <template>
-  <article class="w-full h-full">
+  <article class="w-full h-full max-h-full">
     <!-- show loading icon while fetching recipes -->
     <base-icon
       v-if="$store.state.recipeLoading"

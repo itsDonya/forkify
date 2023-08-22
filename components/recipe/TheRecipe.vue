@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-h-full flex flex-col items-center justify-start gap-4 overflow-scroll"
+    class="w-full max-h-full flex flex-col items-center justify-start gap-4 overflow-y-auto"
   >
     <!-- image & title -->
     <section
@@ -22,8 +22,8 @@
     </section>
 
     <!-- time & servings -->
-    <section class="w-full px-12 my-8 flex items-center justify-between">
-      <div class="flex items-center justify-start gap-4">
+    <section class="w-full px-16 mt-12 mb-5 flex items-center justify-between">
+      <div class="flex items-center justify-start gap-8">
         <!-- time -->
         <div class="flex items-center justify-center gap-1.5">
           <base-icon
@@ -47,14 +47,14 @@
           <!-- increase servings -->
           <span
             @click="increaseServings"
-            class="w-5 h-5 border-2 font-bold border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+            class="w-5 h-5 border-2 font-bold text-sm border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
             >+</span
           >
 
           <!-- decrease servings -->
           <span
             @click="decreaseServings"
-            class="w-5 h-5 border-2 font-bold border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+            class="w-5 h-5 border-2 font-bold text-sm border-peach rounded-full flex items-center justify-center text-peach hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
             >-</span
           >
         </div>
@@ -93,6 +93,25 @@
             {{ ingredient.description }}
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- publisher -->
+    <section class="w-full p-10 flex flex-col items-center justify-start gap-6">
+      <h5 class="text-peach text-xl font-bold uppercase tracking-wider">
+        how to cook it
+      </h5>
+
+      <div class="w-full flex flex-col items-center justify-center gap-4">
+        <p class="w-9/12 text-neutral-500 text-center">
+          This recipe was carefully designed and tested by
+          <span class="font-bold">{{ recipe.publisher }}</span>
+          . Please check out directions at their website.
+        </p>
+
+        <recipe-directions-btn
+          :href="recipe.source_url"
+        ></recipe-directions-btn>
       </div>
     </section>
   </div>
