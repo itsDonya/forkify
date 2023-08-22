@@ -55,6 +55,9 @@ export const mutations = {
     bookmarks.unshift(data);
     Vue.set(state, "bookmarks", bookmarks);
   },
+  setBookmarks(state, list) {
+    state.bookmarks = list;
+  },
 };
 
 export const actions = {
@@ -100,7 +103,7 @@ export const actions = {
         commit("setRecipeError", error.response.data.error);
       });
   },
-  addBookmark({ commit }, recipeData) {
+  addBookmark({ state, commit }, recipeData) {
     const bookmarkData = {
       id: recipeData.id,
       image: recipeData.image_url,
@@ -109,6 +112,17 @@ export const actions = {
     };
 
     commit("addBookmark", bookmarkData);
+
+    localStorage.setItem("Forkify_Bookmarks", JSON.stringify(state.bookmarks));
+  },
+  getBookmarks({ commit }) {
+    const bookmarks = localStorage.getItem("Forkify_Bookmarks");
+    if (bookmarks) {
+      commit("setBookmarks", JSON.parse(bookmarks));
+    } else {
+      commit("setBookmarks", []);
+      localStorage.setItem("Forkify_Bookmarks", JSON.stringify([]));
+    }
   },
 };
 
